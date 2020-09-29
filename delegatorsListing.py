@@ -13,7 +13,10 @@ try:
     import winsound
 except ImportError as e: print(e)
 
-
+ENDPOINTS = {
+    'delegations': 'https://tradescan.switcheo.org/staking/delegators/%s/delegations',
+    'profile': 'https://tradescan.switcheo.org/get_profile?account=%s',
+}
 FILENAMES = [
     '03labsDelegators.txt',
     'b2sDelegators.txt',
@@ -35,23 +38,28 @@ FILENAMES = [
 ]
 
 unique_addresses = set()
-
 for filename in FILENAMES:
     with open(filename) as f:
-        lines = [L.strip() for L in f]
-        
-    for i, line in enumerate(lines):
-        # Line numbers divisible by 4 (includes 0)
-        if not i % 4:
-            unique_addresses.add(line)
+        unique_addresses.update({L.strip() for i, L in enumerate(f) if not i % 4})
 
-# Convert to list
-unique_addresses = [*unique_addresses]
-
-totalDelegators = len(unique_addresses)
-print(totalDelegators)
-
+print(len(unique_addresses))
 
 with open('allDelegators.txt', 'w') as f:
-    f.write(str(unique_addresses))
+    f.write(repr(list(unique_addresses)))
 
+
+# Get delegator info
+# ------------------------------------------------------------------------------
+for addr in unique_addresses:
+    with urllib.request.urlopen(ENDPOINTS['profile'] % addr) as req:
+        payload = json.loads(req.read().decode())
+        last_seen = datetime.fromisoformat(payload['last_seen_time'][:-1])
+
+    with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
+        payload = json.loads(req.read().decode())
+        total = sum(int(r['balance']['amount']) for r in payload['result'])
+
+    print(addr, last_seen, total)
+
+    # Only do this once, for testing
+    break
