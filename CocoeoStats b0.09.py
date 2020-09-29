@@ -16,7 +16,7 @@ from time import time
 try:
     import winsound
 except ImportError:
-    # Fake winsound lets you call Beep/PlaySound/MessageBeep without doing anything
+    # Fake winsound lets you call Beep/PlaySound/MessageBeep without doing anything/ intersting thanks
     winsound = type('', (), {'__getattr__': lambda *a: lambda *a, **kw: None})()
 
 
@@ -43,8 +43,6 @@ def get_profile(k_v):
 # Init time
 # ------------------------------------------------------------------------------
 initTime = int(time())
-print(initTime)
-
 
 # Get all delegators from all bonded validators
 # ------------------------------------------------------------------------------
