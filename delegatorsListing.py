@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 '''
-delegatorsListing b0.04
+delegatorsListing b0.05
 '''
 
 # Import librarys
 # ------------------------------------------------------------------------------
+import csv
 import time
 import json
 import urllib.request
@@ -50,16 +51,18 @@ with open('allDelegators.txt', 'w') as f:
 
 # Get delegator info
 # ------------------------------------------------------------------------------
-for addr in unique_addresses:
-    with urllib.request.urlopen(ENDPOINTS['profile'] % addr) as req:
-        payload = json.loads(req.read().decode())
-        last_seen = datetime.fromisoformat(payload['last_seen_time'][:-8])
+with open('output.csv', 'w') as f:
+    writer = csv.writer(f)
 
-    with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
-        payload = json.loads(req.read().decode())
-        total = sum(int(r['balance']['amount']) for r in payload['result'])
+    for addr in unique_addresses:
+        with urllib.request.urlopen(ENDPOINTS['profile'] % addr) as req:
+            payload = json.loads(req.read().decode())
+            last_seen = datetime.fromisoformat(payload['last_seen_time'][:19])
 
-    print(addr, last_seen, total)
+        with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
+            payload = json.loads(req.read().decode())
+            total = sum(int(r['balance']['amount']) for r in payload['result'])
 
-    # Only do this once, for testing
-    break
+        print(addr, last_seen, total)
+        writer.writerow([addr, last_seen, total])
+
