@@ -74,7 +74,7 @@ def get_row(addr):
 with open('output.csv', 'w') as f:
     writer = csv.writer(f)
 
-    with ThreadPoolExecutor(max_workers=6) as executor:
+    with ThreadPoolExecutor(max_workers=16) as executor:
         for row in executor.map(get_row, unique_addresses):
             writer.writerow(row)
             print(*row)
