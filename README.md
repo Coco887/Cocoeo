@@ -1,9 +1,9 @@
 # Cocoeo
-1)Run the bot to get an actual snapshot.
+1)Run the bot to get an actual snapshot
 2)Enjoy
 
-You got the list of rawWalletAdresses on allDelegators.txt
-You got an CSV file of wallets adresses / last time seen / total amount stacked on output.csv
+
+You got an CSV file of wallets adresses / last time seen / total amount stacked on delegator_info.csv.
 
 
 ***** use max 8 workers or crash, lower it if crash.
