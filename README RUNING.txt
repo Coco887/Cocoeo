@@ -11,4 +11,4 @@ You got an CSV file of wallets adresses / last time seen / total amount stacked 
 with ThreadPoolExecutor(max_workers=6) as executor:
 ----------------------------------------------------
 
-Snapshot duration estimated time: ~10 minutes
+Snapshot duration estimated time: 7-9 minutes
