@@ -6,9 +6,9 @@ You got the list of rawWalletAdresses on allDelegators.txt
 You got an CSV file of wallets adresses / last time seen / total amount stacked on output.csv
 
 
-***** use max 4 workers or crash:
+***** use max 6 workers or crash:
 ----------------------------------------------------
-with ThreadPoolExecutor(max_workers=4) as executor:
+with ThreadPoolExecutor(max_workers=6) as executor:
 ----------------------------------------------------
 
 Snapshot duration estimated time: ~10 minutes
