@@ -70,5 +70,4 @@ with open('output.csv', 'w') as f:
     with ThreadPoolExecutor(max_workers=4) as executor:
         for row in executor.map(get_row, unique_addresses):
             writer.writerow(row)
-            print(row)
-
+            print(*row)
