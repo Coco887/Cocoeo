@@ -1,7 +1,7 @@
 swth1hexzxh3apqpqzzchhgynks2xr8ar8qvdf3m9cw	
 2,997,000.00000390
 SWTH
-18.66%
+18.65%
 swth1q0698fgu60qrf6uyl30tz06hu0yvngwu8zw9nj	
 1,179,468.13635250
 SWTH
@@ -15,7 +15,7 @@ swth13v3l9gfgl0l846v3dfwvr799yq2x68g0z6uyrq
 SWTH
 5.76%
 swth1jkrjrv64g0xge3rucw8k7zjt48zxzg2lg48w02	
-749,558.53786119
+750,355.42675007
 SWTH
 4.67%
 swth17per2nytvfmlfpjytrasth2hd6qq472aglac0w	
@@ -67,9 +67,9 @@ swth1j84ww0rrtmfv7m8gvyat2xyzrvu54pxn2k89lw
 SWTH
 1.43%
 swth16zsswx5gw2f4pgtwwt7tpr95j8ts5xcxzellfy	
-226,834.31100024
+228,854.31100024
 SWTH
-1.41%
+1.42%
 swth1zdrpycvrneveqrcl99mkkchm023fdfp7hxy2wg	
 209,740.00000000
 SWTH
@@ -163,7 +163,7 @@ swth1a583e54puzs6xyw2xgwfcnn6gs753sgkzemse7
 SWTH
 0.37%
 swth138e8dusdau2h32pfxtztnr2w8ld7vkhlpya7dg	
-59,070.07723754
+59,756.66516154
 SWTH
 0.37%
 swth12wykvadqmg3m78r7gpaxak39xgas9qkr570aam	

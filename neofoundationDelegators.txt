@@ -390,6 +390,10 @@ swth13lmlrszgsjkcncwyl36rp4uckze2ac8jntg3s0
 22,193.00000000
 SWTH
 0.10%
+swth1pg0am4lh860qkrt4jz7wqv82zjau87yerxv9z7	
+20,778.90000000
+SWTH
+0.09%
 swth1vjl0jzj5c7l9x2f78w93jp6rsqvfmrzxa4hl04	
 20,533.10644791
 SWTH
@@ -448,10 +452,6 @@ SWTH
 0.09%
 swth1uxay6mpn2cct40zkjqsxvyw4hf78enjxl5702k	
 18,290.00000000
-SWTH
-0.08%
-swth1pg0am4lh860qkrt4jz7wqv82zjau87yerxv9z7	
-18,278.90000000
 SWTH
 0.08%
 swth10dyje4hd7jsnekrnxrkatpn58wsvzzwpumsp59	
@@ -876,10 +876,6 @@ SWTH
 0.00%
 swth1evw77l29cxegtwwt4rnztpevfjnnaw3gee5lpk	
 490.08984500
-SWTH
-0.00%
-swth1ukd66h6hw8jrjqfr65nktnlv9kea80uwkew76e	
-400.00000000
 SWTH
 0.00%
 swth1jdz5fj736dyxreqs6k7aa58dh5k8fe4avt9huf	
