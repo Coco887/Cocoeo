@@ -58,8 +58,9 @@ def get_row(addr):
     with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
         payload = json.loads(req.read().decode())
         total = sum(float(r['balance']['amount']) for r in payload['result'])
-
-    return [addr, last_seen, total]
+        fulltotal = int(total/100000000)
+        
+    return [addr, last_seen, fulltotal]
 
 
 # Get delegator info
@@ -67,7 +68,7 @@ def get_row(addr):
 with open('output.csv', 'w') as f:
     writer = csv.writer(f)
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=8) as executor:
         for row in executor.map(get_row, unique_addresses):
             writer.writerow(row)
             print(*row)
