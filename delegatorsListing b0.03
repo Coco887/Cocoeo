@@ -1,9 +1,18 @@
-# delegatorsListing b0.02
+#!/usr/bin/env python
+'''
+delegatorsListing b0.03
+'''
 
 # Import librarys
 # ------------------------------------------------------------------------------
-from datetime import datetime # Get the time and date of computer to set the timer.
-import urllib.request, json, winsound, time # Get the urllib class for API, JSON class, Winsound, time class.
+import time
+import json
+import urllib.request
+from datetime import datetime
+try:
+    import winsound
+except ImportError as e: print(e)
+
 
 FILENAMES = [
     '03labsDelegators.txt',
@@ -25,25 +34,24 @@ FILENAMES = [
     'zilliquaDelegators.txt'
 ]
 
-list_of_dicts = []
+unique_addresses = set()
 
 for filename in FILENAMES:
     with open(filename) as f:
-        it = iter(f.read().splitlines())
-
-    while True:
-        try:
-            address, amount, _, percentage = next(it), next(it), next(it), next(it)
-            list_of_dicts.append({
-                'address': address,
-            })
-        except StopIteration: break
+        lines = [L.strip() for L in f]
         
-unique_addresses = list({d['address'] for d in list_of_dicts})
+    for i, line in enumerate(lines):
+        # Line numbers divisible by 4 (includes 0)
+        if not i % 4:
+            unique_addresses.add(line)
+
+# Convert to list
+unique_addresses = [*unique_addresses]
+
 totalDelegators = len(unique_addresses)
 print(totalDelegators)
 
-allDelegators = 'allDelegators.txt'
-saveDelegators = open(allDelegators, 'w')
-saveDelegators.write(str(unique_addresses))
-saveDelegators.close()
+
+with open('allDelegators.txt', 'w') as f:
+    f.write(str(unique_addresses))
+
