@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 '''
-delegatorsListing b0.10
+delegatorsListing b0.11
 '''
 
 # Import librarys
 # ------------------------------------------------------------------------------
 import csv
 import json
+import re
 import shutil
+import threading
 import urllib.request
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
@@ -30,6 +32,31 @@ ENDPOINTS = {
 TESTING = False
 
 
+def cprint(string, *, reset='w', end='\n', funcs={}, lock=threading.Lock()):
+    '''
+    Cross-platform color print function (it's harder than you think)
+
+    Indicate BOLD or normal red yellow green blue cyan magenta & white
+    by inserting upper- or lower-cased r y g b c m & w letters surrounded by ;'s
+
+    Example: cprint("These words are ;R;bold red, ;w;normal white, and ;c;cyan.")
+    '''
+    if not funcs:
+        try:
+            from ctypes import windll
+            colors = 1,3,2,5,4,6,7,9,11,10,13,12,14,15
+            setcolor = (lambda c, f=windll.kernel32.SetConsoleTextAttribute,
+                                  s=windll.kernel32.GetStdHandle(-11), **_: f(s, c))
+        except ImportError:
+            colors = (f'\033[{i};3{c}m' for i in (0,1) for c in (4,6,2,5,1,3,7))
+            setcolor = print
+        funcs.update({f';{L};': lambda s, c=c, f=setcolor, **kw: f(c, **kw)
+                      for L, c in zip('bcgmrywBCGMRYW', colors)})
+    with lock:
+        for t in re.split(f'(;.;)', f'{string};{reset};{end}'):
+            funcs.get(t, print)(t, end='', flush=True)
+
+
 def get_json(url):
     with urllib.request.urlopen(url) as req:
         return json.loads(req.read().decode())
@@ -43,9 +70,9 @@ def get_profile(k_v):
     name = payload.get('username', payload.get('twitter', ''))
 
     # TODO: balance from every validator
-    row = [addr, last_seen, name, total]
-    print(*row)
-    return row
+
+    cprint(f';G;{name or "anon":>20};Y;@;R;{addr[:10]}...;w; {last_seen} ;C;-> ;G;{total:>10}')
+    return [addr, name, last_seen, total]
 
 
 # Init time
@@ -70,7 +97,7 @@ for v in validators:
     for i, d in enumerate(delegations):
         amount = int(d['balance']['amount']) // 100_000_000
         delegators[d['delegator_address']].append(amount)
-    print(f'+{i+1:4} delegator totals from {v["description"]["moniker"]}')
+    cprint(f';Y;+;M;{i+1:4};w; delegator totals from ;G;{v["description"]["moniker"]}')
 
 
 # Get all delegators profiles
@@ -99,7 +126,7 @@ with savefile.open('w') as f:
         # Get the first 4 items of the old row, fallback to new row
         old_row = old_rows.get(addr, row)[:4]
         # Keep old name
-        row[2] = old_row[2]
+        row[1] = old_row[1]
         # Add balance change
         row.append(row[3] - int(old_row[3]))
 
