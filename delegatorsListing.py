@@ -53,7 +53,7 @@ with open('allDelegators.txt', 'w') as f:
 for addr in unique_addresses:
     with urllib.request.urlopen(ENDPOINTS['profile'] % addr) as req:
         payload = json.loads(req.read().decode())
-        last_seen = datetime.fromisoformat(payload['last_seen_time'][:-1])
+        last_seen = payload['last_seen_time'][:19]
 
     with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
         payload = json.loads(req.read().decode())
