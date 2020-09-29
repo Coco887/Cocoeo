@@ -9,6 +9,7 @@ import csv
 import time
 import json
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 try:
     import winsound
@@ -49,20 +50,25 @@ with open('allDelegators.txt', 'w') as f:
     f.write(repr(list(unique_addresses)))
 
 
+def get_row(addr):
+    with urllib.request.urlopen(ENDPOINTS['profile'] % addr) as req:
+        payload = json.loads(req.read().decode())
+        last_seen = datetime.fromisoformat(payload['last_seen_time'][:19])
+
+    with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
+        payload = json.loads(req.read().decode())
+        total = sum(float(r['balance']['amount']) for r in payload['result'])
+
+    return [addr, last_seen, total]
+
+
 # Get delegator info
 # ------------------------------------------------------------------------------
 with open('output.csv', 'w') as f:
     writer = csv.writer(f)
 
-    for addr in unique_addresses:
-        with urllib.request.urlopen(ENDPOINTS['profile'] % addr) as req:
-            payload = json.loads(req.read().decode())
-            last_seen = datetime.fromisoformat(payload['last_seen_time'][:19])
-
-        with urllib.request.urlopen(ENDPOINTS['delegations'] % addr) as req:
-            payload = json.loads(req.read().decode())
-            total = sum(int(r['balance']['amount']) for r in payload['result'])
-
-        print(addr, last_seen, total)
-        writer.writerow([addr, last_seen, total])
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        for row in executor.map(get_row, unique_addresses)
+            writer.writerow(row)
+            print(row)
 
