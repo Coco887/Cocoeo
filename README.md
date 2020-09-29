@@ -1,6 +1,6 @@
 # Cocoeo
 1)Run the bot to get an actual snapshot
-*your csv file got updated if you run the bot again
+(*your csv file got updated if you run the bot again)
 
 
 You got an CSV file of wallets adresses / last time seen / total amount stacked on delegator_info.csv.
