@@ -1,6 +1,6 @@
 # Cocoeo
 1)Run the bot to get an actual snapshot
-2)Enjoy
+*your csv file got updated if you run the bot again
 
 
 You got an CSV file of wallets adresses / last time seen / total amount stacked on delegator_info.csv.
@@ -8,7 +8,7 @@ You got an CSV file of wallets adresses / last time seen / total amount stacked 
 
 ***** use max 8 workers or crash, lower it if crash.
 --------------------------------------------------------------------------------------------------------
-~line 78  --------   with ThreadPoolExecutor(max_workers=8) as executor:
+~line 105  --------   with ThreadPoolExecutor(max_workers=8) as executor:
 --------------------------------------------------------------------------------------------------------
 
 Snapshot duration estimated time: 3 minutes
