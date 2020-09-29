@@ -8,8 +8,7 @@ You got an CSV file of wallets adresses / last time seen / total amount stacked 
 
 ***** use max 8 workers or crash, lower it if crash.
 --------------------------------------------------------------------------------------------------------
-~line 77  --------   with ThreadPoolExecutor(max_workers=8) as executor:
+~line 63  --------   with ThreadPoolExecutor(max_workers=8) as executor:
 --------------------------------------------------------------------------------------------------------
 
 Snapshot duration estimated time: 3 minutes
-© 2020 GitHub, Inc.
