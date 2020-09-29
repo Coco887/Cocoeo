@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''
-delegatorsListing b0.05
+delegatorsListing b0.08
 '''
 
 # Import librarys
@@ -11,9 +11,15 @@ import json
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
+from time import time 
 try:
     import winsound
 except ImportError as e: print(e)
+
+# Init time
+# ------------------------------------------------------------------------------
+initTime = int(time())
+print (initTime)
 
 ENDPOINTS = {
     'delegations': 'https://tradescan.switcheo.org/staking/delegators/%s/delegations',
@@ -68,7 +74,15 @@ def get_row(addr):
 with open('output.csv', 'w') as f:
     writer = csv.writer(f)
 
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=12) as executor:
         for row in executor.map(get_row, unique_addresses):
             writer.writerow(row)
             print(*row)
+            
+# End of process alerter and duration
+# ------------------------------------------------------------------------------
+newTimestamp = int(time())
+processTime = newTimestamp - initTime
+print ('Snapshot Duration:',processTime,'seconds')
+winsound.Beep(550, 250)
+winsound.Beep(650, 350)
