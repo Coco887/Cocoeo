@@ -1,4 +1,4 @@
-# Cocoeo
+# Cocoeo 0.11
 1)Run the bot to get an actual snapshot
 (*your csv file got updated if you run the bot again)
 
