@@ -3,8 +3,8 @@
 (*your csv file got updated if you run the bot again, notice that the names are persistants and stay through an update.)</br>
 
 
-Snapshot on delegator_info.csv (wallets adresses / names / last time seen / total amount stacked / balance changes)</br>
-Backup of your previous snapshot on delegator_info.bak</br>
+Snapshot: on delegator_info.csv (wallets adresses / names / last time seen / total amount stacked / balance changes)</br>
+Backup of your previous Snapshot: on delegator_info.bak</br>
 
 --------------------------------------------------------------------------------------------------------
 
