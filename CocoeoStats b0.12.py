@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''
-delegatorsListing b0.11
+delegatorsListing b0.12
 '''
 
 # Import librarys
