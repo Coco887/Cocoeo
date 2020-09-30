@@ -135,6 +135,6 @@ with savefile.open('w') as f:
 # ------------------------------------------------------------------------------
 newTimestamp = int(time())
 processTime = newTimestamp - initTime
-print('Snapshot Duration:', processTime, 'seconds')
+print('Snapshot Duration:', processTime, 'seconds - ', str(datetime.now())[:19])
 winsound.Beep(550, 250)
 winsound.Beep(650, 350)
