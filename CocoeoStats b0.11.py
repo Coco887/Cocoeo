@@ -113,7 +113,7 @@ old_rows = {}
 
 if savefile.exists():
     with savefile.open() as f:
-        old_rows = {row[0]: row for row in csv.reader(f)}
+        old_rows = {row[0]: row for row in csv.reader(f) if row}
     shutil.copy(savefile, savefile.with_suffix('.bak'))
 
 
