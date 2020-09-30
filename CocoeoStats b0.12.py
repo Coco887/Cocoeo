@@ -29,7 +29,7 @@ ENDPOINTS = {
     'validators': 'https://tradescan.switcheo.org/get_all_validators',
     'validator_delegations': 'https://tradescan.switcheo.org/staking/validators/%s/delegations'
 }
-TESTING = True
+TESTING = False
 THREADS = 8
 
 def cprint(string, *, reset='w', end='\n', funcs={}, lock=threading.Lock()):
@@ -84,7 +84,7 @@ for v in validators:
     # For testing purposes, limit to 5 delegators per validator
     # Note this will shrink the CSV file 
     if TESTING:
-        delegations = delegations[:5]
+        delegations = delegations[:3]
 
     for i, d in enumerate(delegations):
         amount = int(d['balance']['amount']) // 100_000_000
@@ -125,10 +125,9 @@ with savefile.open('w') as f:
         writer.writerow(row)
 
 
-# End of process alerter and duration
+# End of process alerter and duration and timestamp
 # ------------------------------------------------------------------------------
 newTimestamp = int(time())
 processTime = newTimestamp - initTime
 print('Snapshot Duration:', processTime, 'seconds - ', str(datetime.now())[:19])
-winsound.Beep(550, 250)
-winsound.Beep(650, 350)
+winsound.Beep(666, 333), winsound.Beep(444, 222)
