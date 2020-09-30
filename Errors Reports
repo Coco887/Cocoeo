@@ -1,9 +1,1 @@
 Crash:
-
-Traceback (most recent call last):
-  File "E:\Bureau\CoceoStats\CocoeoStats b0.11.py", line 114, in <module>
-    old_rows = {row[0]: row for row in csv.reader(f)}
-  File "E:\Bureau\CoceoStats\CocoeoStats b0.11.py", line 114, in <dictcomp>
-    old_rows = {row[0]: row for row in csv.reader(f)}
-IndexError: list index out of range
->>> 
