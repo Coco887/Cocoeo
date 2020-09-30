@@ -22,14 +22,14 @@ except ImportError:
     # Fake winsound lets you call Beep/PlaySound/MessageBeep without doing anything
     winsound = type('', (), {'__getattr__': lambda *a: lambda *a, **kw: None})()
 
-
+initTime = int(time())
 CSV_FILE = 'delegator_info.csv'
 ENDPOINTS = {
     'profile': 'https://tradescan.switcheo.org/get_profile?account=%s',
     'validators': 'https://tradescan.switcheo.org/get_all_validators',
     'validator_delegations': 'https://tradescan.switcheo.org/staking/validators/%s/delegations'
 }
-TESTING = False
+TESTING = True
 THREADS = 8
 
 def cprint(string, *, reset='w', end='\n', funcs={}, lock=threading.Lock()):
@@ -71,12 +71,6 @@ def get_profile(k_v):
 
     cprint(f';G;{name or "anon":>20};Y;@;R;{addr[:10]}...;w; {last_seen} ;C;-> ;G;{total:>10}')
     return [addr, name, last_seen, total]
-
-
-# Init time
-# ------------------------------------------------------------------------------
-initTime = int(time())
-
 
 # Get all delegators from all bonded validators
 # ------------------------------------------------------------------------------
