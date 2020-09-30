@@ -125,7 +125,7 @@ with savefile.open('w') as f:
         writer.writerow(row)
 
 
-# End of process alerter and duration and timestamp
+# End of process alerter, duration and timestamp
 # ------------------------------------------------------------------------------
 newTimestamp = int(time())
 processTime = newTimestamp - initTime
