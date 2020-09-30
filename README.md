@@ -5,6 +5,7 @@
 
 
 Snapshot: "delegator_info.csv" (wallets adresses / names / last time seen / total amount stacked / balance changes)</br>
+
 Backup of your previous Snapshot: "delegator_info.bak"</br>
 
 --------------------------------------------------------------------------------------------------------
