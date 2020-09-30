@@ -13,4 +13,4 @@ line 33  --------   THREADS = 8
 
 --------------------------------------------------------------------------------------------------------
 
-Snapshot duration estimated time: ~3 minutes
+Snapshot duration estimation time: ~3 minutes
