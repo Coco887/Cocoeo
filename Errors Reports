@@ -1,12 +1,9 @@
 Crash:
 
 
- File "E:\Bureau\CoceoStats\CocoeoStats b0.13.py", line 179, in <module>
-    writer.writeheader()
-  File "C:\Users\VADOR\AppData\Local\Programs\Python\Python38\lib\csv.py", line 143, in writeheader
-    return self.writerow(header)
-  File "C:\Users\VADOR\AppData\Local\Programs\Python\Python38\lib\csv.py", line 154, in writerow
-    return self.writer.writerow(self._dict_to_list(rowdict))
-  File "C:\Users\VADOR\AppData\Local\Programs\Python\Python38\lib\encodings\cp1252.py", line 19, in encode
-    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
-UnicodeEncodeError: 'charmap' codec can't encode character '\u0394' in position 29: character maps to <undefined>
+Traceback (most recent call last):
+  File "E:\Bureau\CoceoStats\CocoeoStats b0.13.py", line 161, in <module>
+    old_data = {row['address']: row for row in csv.DictReader(f)}
+  File "E:\Bureau\CoceoStats\CocoeoStats b0.13.py", line 161, in <dictcomp>
+    old_data = {row['address']: row for row in csv.DictReader(f)}
+KeyError: 'address'
