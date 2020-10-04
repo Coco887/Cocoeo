@@ -155,9 +155,9 @@ savefile = Path(CSV_FILE)
            
 # Load any existing saved data and make a backup
 if savefile.exists():
-    with savefile.open('r',encoding='utf-8') as f:
+    with savefile.open(encoding='utf-8') as f:
         old_data = {row['address']: row for row in csv.DictReader(f)}
-    shutil.copy(savefile, savefile.with_suffix('.bak'))
+    #shutil.copy(savefile, savefile.with_suffix('.bak'))
 else:
     old_data = {}
 
@@ -166,7 +166,7 @@ else:
 # TODO: Clean up this mess
 
 # Overwrite the savefile
-with savefile.open('w') as f:
+with savefile.open('w', encoding='utf-8') as f:
 
     # Figure out what the column headers should be
     validator_names = [v['description']['moniker'] for v in validators]
