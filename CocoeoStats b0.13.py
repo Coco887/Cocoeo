@@ -80,9 +80,9 @@ def populate_delegator_info(address):
     payload = get_json(ENDPOINTS['profile'] % address)
 
     d['last_seen'] = datetime.fromisoformat(payload['last_seen_time'][:19])
-    d['name'] = payload.get('username', payload.get('twitter', ''))
+    d['#name'] = payload.get('username', payload.get('twitter', ''))
 
-    cprint(f';G;{d["name"] or "anon":>15};Y;@;M;{address} ;C;{d["last_seen"]}')
+    cprint(f';G;{d["#name"] or "anon":>15};Y;@;M;{address} ;C;{d["last_seen"]}')
 
 
 # Main
@@ -102,12 +102,12 @@ delegator_info = defaultdict(dict)
 # After this, each delegator's dictionary will contain validators and amounts:
 # delegator_info = {
 #   'delegator1_address': {
-#       'validator1_address': amount, 
-#       'validator2_address': amount,
+#       'validator1_name': amount, 
+#       'validator2_name': amount,
 #   },
 #   'delegator2_address': {
-#       'validator1_address': amount, 
-#       'validator2_address': amount,
+#       'validator1_name': amount, 
+#       'validator2_name': amount,
 #   },
 # }
 for v in validators:
@@ -131,16 +131,16 @@ for v in validators:
 # each delegator's dictionary (the logic for this is in populate_delegator_info):
 # deleagor_info = {
 #   'delegator1_address': {
-#       'name': 'dolan',
+#       '#name': 'dolan',
 #       'last_seen': datetime.datetime(...),
-#       'validator1_address': 1111,
-#       'validator2_address': 2222,
+#       'validator1_name': 1111,
+#       'validator2_name': 2222,
 #   },
 #   'delegator2_address': {
-#       'name': 'gooby',
+#       '#name': 'gooby',
 #       'last_seen': datetime.datetime(...),
-#       'validator1_address': 1111,
-#       'validator2_address': 2222,
+#       'validator1_name': 1111,
+#       'validator2_name': 2222,
 #   },
 #}
 with ThreadPoolExecutor(max_workers=THREADS) as executor:
@@ -171,7 +171,7 @@ with savefile.open('w', encoding='utf-8') as f:
     # Figure out what the column headers should be
     validator_names = [v['description']['moniker'] for v in validators]
 
-    fieldnames = ['address', 'name', 'last_seen', 'total', 'Δ total']
+    fieldnames = ['address', '#name', 'last_seen', 'total', 'Δ total']
     for n in validator_names:
         fieldnames.append(n)
         fieldnames.append(f'Δ {n}')
@@ -203,7 +203,7 @@ with savefile.open('w', encoding='utf-8') as f:
             **info,         # validator columns
             **deltas,       # Δ columns
             'address':      address,
-            'name':         old_info.get('name', info['name']),
+            '#name':         old_info.get('#name', info['#name']),
             'total':        total,
         })
 
