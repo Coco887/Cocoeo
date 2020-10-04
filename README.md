@@ -1,11 +1,11 @@
-# Cocoeo 0.12 stable
+# Cocoeo 0.13 stable
 PYTHON 3.7.x needed
 
 1)Run the bot to get an actual snapshot</br>
-(*your csv file got updated if you run the bot again, notice that the names are persistants and stay through an update.)</br>
+(*your csv file got updated if you run the bot again, Δ show the difference staked since last snapshot,</br> notice that the names are persistants and stay through an update.)</br>
 
 
-Snapshot: "delegator_info.csv" (wallets adresses / names / last time seen / total amount stacked / balance changes since last snapshot)</br>
+Snapshot: "delegator_info.csv" (address, #name, last_seen, total, Δ total, val1 ,Δ val1, val2 ,Δ val2, ...)</br>
 
 Backup of your previous Snapshot: "delegator_info.bak"</br>
 
