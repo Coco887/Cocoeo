@@ -31,7 +31,7 @@ ENDPOINTS = {
     'validators': 'https://tradescan.switcheo.org/get_all_validators',
     'validator_delegations': 'https://tradescan.switcheo.org/staking/validators/%s/delegations'
 }
-TESTING = True
+TESTING = False
 THREADS = 8
 
 
