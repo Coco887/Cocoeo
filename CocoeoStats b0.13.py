@@ -157,7 +157,7 @@ savefile = Path(CSV_FILE)
 if savefile.exists():
     with savefile.open(encoding='utf-8') as f:
         old_data = {row['address']: row for row in csv.DictReader(f)}
-    #shutil.copy(savefile, savefile.with_suffix('.bak'))
+    shutil.copy(savefile, savefile.with_suffix('.bak'))
 else:
     old_data = {}
 
@@ -203,7 +203,7 @@ with savefile.open('w', encoding='utf-8') as f:
             **info,         # validator columns
             **deltas,       # Δ columns
             'address':      address,
-            '#name':         old_info.get('#name', info['#name']),
+            '#name':        old_info.get('#name', info['#name']),
             'total':        total,
         })
 
