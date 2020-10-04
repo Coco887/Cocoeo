@@ -152,11 +152,7 @@ with ThreadPoolExecutor(max_workers=THREADS) as executor:
 # ------------------------------------------------------------------------------
 savefile = Path(CSV_FILE)
 
-# Encode savefile in UTF-8
-def utf_8_encoder(savefile):
-    for line in savefile:
-        yield line.encode('utf-8')
-
+           
 # Load any existing saved data and make a backup
 if savefile.exists():
     with savefile.open('r',encoding='utf-8') as f:
