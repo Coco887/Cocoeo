@@ -11,7 +11,7 @@ Backup of your previous Snapshot: "delegator_info.bak"</br>
 
 --------------------------------------------------------------------------------------------------------
 
-Use max 8 workers, lower it if crash.</br>
+THREADS: Use max 8 workers, lower it if crash.</br>
 line 33  --------   THREADS = 8
 
 --------------------------------------------------------------------------------------------------------
