@@ -1,9 +1,1 @@
-Crash:
 
-
-Traceback (most recent call last):
-  File "E:\Bureau\CoceoStats\CocoeoStats b0.13.py", line 161, in <module>
-    old_data = {row['address']: row for row in csv.DictReader(f)}
-  File "E:\Bureau\CoceoStats\CocoeoStats b0.13.py", line 161, in <dictcomp>
-    old_data = {row['address']: row for row in csv.DictReader(f)}
-KeyError: 'address'
