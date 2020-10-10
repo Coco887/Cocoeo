@@ -1,4 +1,4 @@
-# Cocoeo 0.13 stable
+# Cocoeo 0.131 stable fixed 10/10/2020
 PYTHON 3.7.x needed
 
 1)Run the bot to get an actual snapshot</br>
