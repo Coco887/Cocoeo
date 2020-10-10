@@ -5,6 +5,7 @@ CocoeoSTB b0.02
 # Import librarys
 # ------------------------------------------------------------------------------
 import urllib.request
+import requests
 import json
 from time import time
 from datetime import datetime # Get the time and date of computer to set the timer.
@@ -18,11 +19,14 @@ except ImportError:
 # ------------------------------------------------------------------------------
 
 ENDPOINTS = {
-    'user.privateKey': 'KytWa3tcq1iBmMRD1dGrdomyeULD4p6foi9hB4FHDPdFbcA7M',
     'getTimestamp': 'https://api.switcheo.network/v2/exchange/timestamp',
-    'getStatus': 'https://api.switcheo.network',    
+    'getStatus': 'https://api.switcheo.network',
+    'postOrder': 'https://api.switcheo.network/v2/orders',
 }
 RUN = True
+posttOrder = 'https://api.switcheo.network/v2/orders'
+address = 'AbDZkiytXNAranqEx4E9FiBYVXWZvmjK5m'
+privateKey = 'KytWa3tcq1iBmMRD1dGrdomyeULD4p6foi9hB4FHDPdFbcA7M'
 
 # Function definitions
 # ------------------------------------------------------------------------------
@@ -48,33 +52,24 @@ for v in timestamp.values(): # Get the raw value from the dictionary and write i
 status = get_json(ENDPOINTS['getStatus'])
 print ('Status of network','-------------',status['status'],'-------------')
 print ('')
-winsound.Beep(350, 350)
-winsound.Beep(250, 250)
 
 # Core Code
 # ------------------------------------------------------------------------------
-#while RUN:
 
-try:
-    function createOrder({
-        pair: 'SWTH_NEO',
-        blockchain: 'neo',
-        address: user.address,
-        side: 'buy',
-        price: (0.001340).toFixed(8),
-        quantity: toAssetAmount(1000, 'SWTH'),
-        useNativeTokens: true,
-        orderType: 'limit',
-        privateKey: user.privateKey
-        })
-    const signableParams = { pair, blockchain, side, price, quantity,
-                             useNativeTokens, orderType, timestamp: getTimestamp(),
-                             contractHash: CONTRACT_HASH }
-    const signature = signParams(signableParams, privateKey)
-    const apiParams = { ...signableParams, address, signature }
-    return api.post(https://api.switcheo.network/v2 + '/orders', apiParams)
-}
-        
-    
+myobj = "{"pair": "SWTH_NEO", "blockchain": "neo", "side": "sell",
+"price": "0.001601",
+  "quantity": "40000000000",
+  "use_native_tokens": false,
+  "order_type": "limit",
+  "timestamp": timestamp['timestamp'],
+  "contract_hash": "<contract hash>",
+  "address": "87cf67daa0c1e9b6caa1443cf5555b09cb3f8e5f",
+  "signature": "<signature>"
+}"
+
+r = requests.post(url = posttOrder, data = myobj)
+pastebin_url = r.text
+print("The pastebin URL is:%s"%pastebin_url)
+
 
     
