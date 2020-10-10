@@ -89,7 +89,7 @@ initTime = int(time())
 
 
 # Get all bonded validators
-validators = [d for d in get_json(ENDPOINTS['validators'])] #if d['Status'] == '2']
+validators = [d for d in get_json(ENDPOINTS['validators'])if d['Status'] == 2]
 
 
 # Dictionary of dictionaries. It will use delegator addresses as keys.
